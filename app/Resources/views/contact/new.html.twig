@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    {% form_theme form 'form/sky_form.html.twig' %}
+
+    <div class="row">
+        <div class="col-md-9">
+            
+            <div class="headline"><h2>{{ 'contact.form_title'|trans }}</h2></div>
+            
+            <p>{{ 'contact.form_desc'|trans }}</p>
+
+            {{ form_start(form, { 'attr': {'class': 'sky-form', 'novalidate': null} }) }}
+
+            {{ form_widget(form) }}
+
+            <div class="form-group">
+                <div class="col-md-2 col-md-offset-10">
+                    <button type="submit" class="btn btn-success">{{ 'contact.submit'|trans }}</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+
+        <div class="col-md-3">
+            <!-- Contacts -->
+            <div class="headline"><h2>{{ 'contact.us'|trans }}</h2></div>
+            <ul class="list-unstyled who margin-bottom-30">
+                <li><a href="#"><i class="fa fa-home"></i>{{ 'contact.address'|trans }}</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i>{{ 'contact.email'|trans }}</a></li>
+                <li><a href="#"><i class="fa fa-phone"></i>{{ 'contact.phone'|trans }}</a></li>
+                <li><a href="#"><i class="fa fa-globe"></i>{{ 'contact.website'|trans }}</a></li>
+            </ul>
+
+            <!-- Business Hours -->
+            <div class="headline"><h2>{{ 'contact.timetable'|trans }}</h2></div>
+            <ul class="list-unstyled margin-bottom-30">
+                <li><strong>{{ 'contact.weekday'|trans }}</strong> 10am to 8pm</li>
+                <li><strong>{{ 'contact.saturday'|trans }}</strong> 11am to 3pm</li>
+                <li><strong>{{ 'contact.sunday'|trans }}</strong> Closed</li>
+            </ul>
+        </div><!--/col-md-3-->
+    </div>
+
+{% endblock %}

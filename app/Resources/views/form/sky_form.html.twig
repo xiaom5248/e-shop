@@ -1,0 +1,105 @@
+{% block form_row %}
+{% spaceless %}
+    
+    {% set label_col = label_col|default(4) %}
+    {% set label_col_type = label_col_type|default('md') %}
+    {% set widget_col = widget_col|default(8) %}
+    {% set widget_col_type = widget_col_type|default('md') %}
+   
+    <section>
+        <div class="row">
+            {% if label %}
+                <label class="{{ ' col' ~ ' col-' ~ label_col_type ~ '-' ~ label_col }}"  for="{{ id }}">{{ label|trans({}, translation_domain) }}</label>
+            {% endif %}
+            <div class="{{ 'col-' ~ widget_col_type ~ '-' ~ widget_col }}">
+                {{ form_widget(form) }}
+                {{ form_errors(form) }}
+            </div>
+        </div>
+    </section>
+            
+{% endspaceless %}
+{% endblock form_row %}
+
+{%- block form_widget_simple -%}
+    {%- set type = type|default('text') -%}
+    <label class="input {% if errors|length > 0 %}state-error{% endif %}">
+        <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    </label>
+{%- endblock form_widget_simple -%}
+
+{%- block checkbox_widget -%}
+    <label class="checkbox"><input type="checkbox" {{ block('widget_attributes') }} {% if checked %} checked="checked"{% endif %}><i></i></label>
+{%- endblock checkbox_widget -%}
+    
+{%- block choice_widget_expanded -%}
+    <div {{ block('widget_container_attributes') }}>
+    {%- for child in form %}
+        {{- form_widget(child) -}}
+    {% endfor -%}
+    </div>
+{%- endblock choice_widget_expanded -%}
+    
+{%- block radio_widget -%}
+    <label class="radio">
+        <input type="radio" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+        <i class="rounded-x"></i>
+        {{ label }}
+    </label>
+{%- endblock radio_widget -%}
+
+{%- block choice_widget_collapsed -%}
+    {%- if required and placeholder is none and not placeholder_in_choices and not multiple and (attr.size is not defined or attr.size <= 1) -%}
+        {% set required = false %}
+    {%- endif -%}
+    <label class="select {% if errors|length > 0 %}state-error{% endif %}">
+        <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+            {%- if placeholder is not none -%}
+                <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? (translation_domain is same as(false) ? placeholder : placeholder|trans({}, translation_domain)) }}</option>
+            {%- endif -%}
+            {%- if preferred_choices|length > 0 -%}
+                {% set options = preferred_choices %}
+                {{- block('choice_widget_options') -}}
+                {%- if choices|length > 0 and separator is not none -%}
+                    <option disabled="disabled">{{ separator }}</option>
+                {%- endif -%}
+            {%- endif -%}
+            {%- set options = choices -%}
+            {{- block('choice_widget_options') -}}
+        </select>
+    </label>
+{%- endblock choice_widget_collapsed -%}    
+
+{% block form_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+        <div class="alert alert-danger"> 
+            <span class="note note-error">
+                {% if errors|length > 1 %}
+                    <ul>
+                        {% for error in errors %}
+                            <li>{{ _self.error(error) }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    {{ _self.error(errors.0) }}
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+{% endspaceless %}
+{% endblock form_errors %}
+
+{%- block textarea_widget -%}
+    <label class="textarea {% if errors|length > 0 %}state-error{% endif %}">
+        <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+    </label>
+{%- endblock textarea_widget -%}
+
+{% macro error(error) %}
+    <i class="fa fa-warning"></i>  {{
+        error.messagePluralization is null
+            ? error.messageTemplate|trans(error.messageParameters, 'validators')
+            : error.messageTemplate|transchoice(error.messagePluralization, error.messageParameters, 'validators')
+    }}
+{% endmacro %}

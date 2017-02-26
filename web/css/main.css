@@ -1,0 +1,14 @@
+.header .logo img {
+	z-index: 1;
+	margin: 10px 0;
+	position: relative;
+}
+
+.sky-form {
+    border: none;
+}
+
+.sky-form section {
+    margin-bottom: 5px;
+}
+

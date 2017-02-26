@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+    <head>
+        <title>{% block title %}{{ 'site.title'|trans }}{% endblock %}</title>
+
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        {% block stylesheets %}
+            {% stylesheets filter='cssrewrite' output='css/all.css'
+                'unify/plugins/bootstrap/css/bootstrap.min.css'                
+                'unify/css/app.css'
+                'unify/css/blocks.css'
+                'unify/css/style.css'
+                'unify/css/headers/header-default.css'
+                'unify/css/footers/footer-v1.css'
+                'unify/css/pages/shortcode_timeline2.css'
+                'unify/plugins/animate.css'
+                'unify/plugins/line-icons/line-icons.css'
+                'unify/plugins/font-awesome/css/font-awesome.css'
+                'unify/css/custom.css'
+                'unify/css/pages/page_log_reg_v1.css'
+                'unify/plugins/sky-forms-pro/skyforms/css/sky-forms.css'
+                'unify/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css'
+
+                'unify/plugins/revolution-slider/rs-plugin/css/settings.css'
+
+                'deps/select2/dist/css/select2.css'
+                'deps/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css'
+
+                'css/main.css'
+
+                
+            %}
+            <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+            {% endstylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% javascripts output="js/unify.js"
+                'unify/plugins/jquery/jquery.min.js'
+                'unify/plugins/back-to-top.js'
+                'unify/plugins/smoothScroll.js'
+                'unify/js/plugins/revolution-slider.js'
+                'unify/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js'
+                'unify/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.revolution.min.js'
+                'unify/js/custom.js'
+                'unify/js/app.js'
+            %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+
+            {% javascripts output="js/vendor.js"
+                'deps/jquery-ui/ui/minified/jquery-ui.min.js'
+                'deps/jquery-ui/ui/i18n/jquery.ui.datepicker-fr.js'
+                'deps/twitter/dist/js/bootstrap.min.js'
+                'deps/select2/dist/js/select2.full.min.js'
+                'deps/select2/dist/js/i18n/fr.js'
+                'deps/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.js'
+
+            %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+
+            {% javascripts output="js/compiled.js"
+
+            %}
+            <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+
+        <script>
+            jQuery(document).ready(function () {
+                App.init();
+                RevolutionSlider.initRSfullWidth();
+            });
+        </script>
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+    </head>
+
+    <body> 
+        <div class="wrapper">
+            {% block header %}
+                <div class="header">
+                    <div class="container">
+                        <a class="logo remove-decoration-url" href="{{ path('homepage') }}">
+                            <img src="{{ asset("assets/img/logo.png") }}" alt="Logo" height='80px'>
+                        </a>
+                        
+{#                        {% if app.user %}
+                        <div class="topbar">
+                            <ul class="loginbar pull-right">
+                                <div id="_token" class="hidden" data-token="{{ csrf_token(token_id) }}"></div>
+                                <li class="hoverSelector">
+                                    <i class="fa fa-user"></i>
+                                    <a>{{ app.user }}</a>
+                                    <ul class="profiler hoverSelectorBlock">
+                                        <li><a href="{{ path("fos_user_security_logout") }}">Se déconnecter</a></li>
+                                        <li><a href="{{ path("profile_change_password") }}">Modifier mot de passe</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        {% endif %}#}
+                    </div>
+                
+                    <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+                        <div class="container">
+                            <ul class="nav navbar-nav">
+                                <li><a href="{{ path('homepage') }}"><i class="fa fa-home"></i></a></li>
+                                
+                                <li class="dropdown">
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                                        {{ 'menu.about_us'|trans }}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#"> {{ 'menu.company'|trans }}</a></li>
+                                        <li><a href="#"> {{ 'menu.team'|trans }}</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#"> {{ 'menu.products'|trans }}</a></li>
+                                <li><a href="{{ path('contact') }}"> {{ 'menu.contact'|trans }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
+
+            {% block breadcrumbs %}
+
+            {% endblock %}
+            
+            <div class="container content">
+                {% block main %}{% endblock %}
+            </div>
+            
+            <div class="footer-v1">
+            {% block footer %}
+                
+            {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

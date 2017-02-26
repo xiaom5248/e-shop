@@ -1,0 +1,14 @@
+{
+  "name": "e-shop",
+  "dependencies": {
+    "twitter": "~3.3.*",
+    "font-awesome": "4.2.*",
+    "jquery-ui": "~1.9.2",
+    "jquery": "~1.11.*",
+    "select2": "4.0.*",
+    "x-editable": "1.5.1"
+  },
+  "resolutions": {
+    "jquery": ">= 1.12.3"
+  }
+}
