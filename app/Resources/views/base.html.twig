@@ -45,10 +45,11 @@
                 'unify/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.revolution.min.js'
 
                 'unify/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js'
-                'unify/js/plugins/cube-portfolio/cube-portfolio-3.js'
+                
 
                 'unify/js/custom.js'
                 'unify/js/app.js'
+                'unify/js/plugins/cube-portfolio/cube-portfolio-3.js'
             %}
             <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
@@ -66,7 +67,7 @@
             {% endjavascripts %}
 
             {% javascripts output="js/compiled.js"
-
+                'js/list/productList.js'
             %}
             <script src="{{ asset_url }}"></script>
             {% endjavascripts %}

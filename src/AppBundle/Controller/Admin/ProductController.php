@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Product;
+use AppBundle\Form\Type\ProductType;
 
 class ProductController extends Controller
 {
@@ -16,7 +17,7 @@ class ProductController extends Controller
     public function indexAction(Request $request)
     {
         $product = new Product();
-        $form = $this->createForm(ContactType::class, $product);
+        $form = $this->createForm(ProductType::class, $product);
 
         $form->handleRequest($request);
         $uploadDirectory = $this->getParameter('upload_directory');

@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProductType extends AbstractType
@@ -19,7 +20,7 @@ class ProductType extends AbstractType
             ->add('price', MoneyType::class, array(
                 'label' => 'product.price',
                 'currency' => 'CNY',
-                'scale' => '2',
+                'scale' => 2,
             ))    
             ->add('image', FileType::class, array(
                 'label' => 'product.image',
