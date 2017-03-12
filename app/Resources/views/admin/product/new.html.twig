@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    {% form_theme form 'form/sky_form.html.twig' %}
+
+    <div class="row">
+        <div class="col-md-12">
+
+            {{ form_start(form, { 'attr': {'class': 'sky-form', 'novalidate': null} }) }}
+
+            {{ form_widget(form) }}
+
+            <div class="form-group">
+                <div class="col-md-2 col-md-offset-10">
+                    <button type="submit" class="btn btn-success">{{ 'contact.submit'|trans }}</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

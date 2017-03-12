@@ -24,7 +24,7 @@ class ContactController extends Controller
             $em->persist($contact);
             $em->flush();
             
-            $this->redirectToRoute('homepage', [
+            return $this->redirectToRoute('homepage', [
                 'message' => [
                     'msg' => 'contact.sent_successfully',
                     'type' => 'success'
