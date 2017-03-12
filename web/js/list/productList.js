@@ -1,6 +1,6 @@
 (function ($) {
     $().ready(function () {
-        $.each('#products-container', function () {
+        $.each($('#products-container'), function () {
             var $this = $(this);
             $this.cubeportfolio({
                 layoutMode: 'grid',
