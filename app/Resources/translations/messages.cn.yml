@@ -5,3 +5,19 @@ menu.about_us: 关于我们
 menu.team: 团队介绍
 menu.products: 产品介绍
 menu.contact: 联系我们
+
+contact.form_title: 联系我们
+contact.form_desc: 无论您是想咨询信息，解决问题，或者是对我们的服务提出建议，您都可以填写表格联系我们。我们会尽我们所能为您服务！
+contact.name: 姓名
+contact.email: 邮箱
+contact.message: 信息
+contact.submit: 发送信息
+contact.us: 联系方式
+contact.our_address: 吉林省长春市宽城区东一路236号
+contact.our_email: yulia_17191671268@163.com
+contact.our_phone: 186 2669 0257
+contact.our_website: www.hongxiang.com
+contact.timetable: 营业时间
+contact.weekday: 周一至周五
+contact.saturday: 周六
+contact.sunday: 周日

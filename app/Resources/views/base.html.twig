@@ -17,7 +17,8 @@
                 'unify/plugins/animate.css'
                 'unify/plugins/line-icons/line-icons.css'
                 'unify/plugins/font-awesome/css/font-awesome.css'
-                'unify/css/custom.css'
+                'unify/plugins/cube-portfolio/cubeportfolio/css/cubeportfolio.min.css'
+                
                 'unify/css/pages/page_log_reg_v1.css'
                 'unify/plugins/sky-forms-pro/skyforms/css/sky-forms.css'
                 'unify/plugins/sky-forms-pro/skyforms/custom/custom-sky-forms.css'
@@ -28,7 +29,6 @@
                 'deps/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css'
 
                 'css/main.css'
-
                 
             %}
             <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
@@ -43,6 +43,10 @@
                 'unify/js/plugins/revolution-slider.js'
                 'unify/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.tools.min.js'
                 'unify/plugins/revolution-slider/rs-plugin/js/jquery.themepunch.revolution.min.js'
+
+                'unify/plugins/cube-portfolio/cubeportfolio/js/jquery.cubeportfolio.min.js'
+                'unify/js/plugins/cube-portfolio/cube-portfolio-3.js'
+
                 'unify/js/custom.js'
                 'unify/js/app.js'
             %}
@@ -105,6 +109,13 @@
                         {% endif %}#}
                     </div>
                 
+                    <!-- Toggle get grouped for better mobile display -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="fa fa-bars"></span>
+                    </button>
+                    <!-- End Toggle -->
+                    
                     <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
                         <div class="container">
                             <ul class="nav navbar-nav">
@@ -119,7 +130,7 @@
                                         <li><a href="#"> {{ 'menu.team'|trans }}</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#"> {{ 'menu.products'|trans }}</a></li>
+                                <li><a href="{{ path('product_index') }}"> {{ 'menu.products'|trans }}</a></li>
                                 <li><a href="{{ path('contact') }}"> {{ 'menu.contact'|trans }}</a></li>
                             </ul>
                         </div>

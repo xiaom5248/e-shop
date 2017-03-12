@@ -17,6 +17,21 @@ class ContactController extends Controller
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
+        
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contact);
+            $em->flush();
+            
+            $this->redirectToRoute('homepage', [
+                'message' => [
+                    'msg' => 'contact.sent_successfully',
+                    'type' => 'success'
+                ]
+            ]);
+        }
+        
         return $this->render('contact/new.html.twig', [
             'form' => $form->createView(),
         ]);
