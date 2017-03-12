@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        $message = $request->query->get('message');
+        $message = $request->query->get('message', null);
         return $this->render('home/home.html.twig', [
             'message' =>  $message,
         ]);
